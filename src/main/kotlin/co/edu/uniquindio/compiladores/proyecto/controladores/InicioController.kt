@@ -7,7 +7,7 @@ import javafx.scene.control.TextArea
 
 class InicioController
 {
-    lateinit var texto:TextArea
+    @FXML lateinit var texto:TextArea
     @FXML
     fun analizarLexema(e:ActionEvent)
     {
