@@ -1,4 +1,4 @@
-package co.edu.uniquindio.compiladores.proyecto
+package co.edu.uniquindio.compiladores.proyecto.lexico
 
 enum class Categoria {
 ENTERO, DECIMAL, IDENTIFICADOR, OPERADOR_ARITMETICO,OPERADOR_LOGICO,PARENTESIS_IZQ, DESCONOCIDO, IDENTIFICADOR_VARIABLE

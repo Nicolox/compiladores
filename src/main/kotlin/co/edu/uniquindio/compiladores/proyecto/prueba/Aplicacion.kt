@@ -1,6 +1,6 @@
 package co.edu.uniquindio.compiladores.proyecto
 
-import kotlin.collections.ArrayList
+import co.edu.uniquindio.compiladores.proyecto.lexico.AnalizadorLexico
 
 fun main() {
 
