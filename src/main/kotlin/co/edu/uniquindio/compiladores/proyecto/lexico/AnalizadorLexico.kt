@@ -3,11 +3,23 @@ package co.edu.uniquindio.compiladores.proyecto.lexico
 class AnalizadorLexico(var codigoFuente: String) {
 
     var posicionActual = 0
-    var carActual = codigoFuente[0]
+    var caracterActual = codigoFuente[0]
     var listaTokens = ArrayList<Token>()
     var finCodigo = 0.toChar()
     var filaActual = 0
     var columnaActual = 0
+    var listaPalabrasReservadas = listOf(
+        "etr",
+        "rls",
+        "cdn",
+        "crt",
+        "dsc",
+        "crc",
+        "cls",
+        "return",
+        "print",
+        "true"
+    )
 
     fun almacenarToken(lexema: String, cat: Categoria, fila: Int, columna: Int) =
         listaTokens.add(Token(lexema, cat, fila, columna))
@@ -17,23 +29,23 @@ class AnalizadorLexico(var codigoFuente: String) {
         filaActual = filaInical
         columnaActual = columnaInicial
 
-        carActual = codigoFuente[posicionActual]
+        caracterActual = codigoFuente[posicionActual]
     }
 
     fun analizar() {
 
-        while (carActual != finCodigo) {
+        while (caracterActual != finCodigo) {
 
-            if (carActual == ' ' || carActual == '\t' || carActual == '\n') {
+            if (caracterActual == ' ' || caracterActual == '\t' || caracterActual == '\n') {
                 obtenerSiguienteCaracter()
                 continue
             }
             if (esEntero()) continue
             if (esDecimal()) continue
-            if (esParentesisIzq()) continue
             if (esParentesisDer()) continue
-            if (esLlaveIzq()) continue
+            if (esParentesisIzq()) continue
             if (esLlaveDer()) continue
+            if (esLlaveIzq()) continue
             if (esCorcheteIzq()) continue
             if (esCorcheteDer()) continue
             if (esFinSentencia()) continue
@@ -42,115 +54,252 @@ class AnalizadorLexico(var codigoFuente: String) {
 //            if (esDosPunto()) continue
             if (esIdentificadorVariable()) continue
 
-            almacenarToken("" + carActual, Categoria.DESCONOCIDO, filaActual, columnaActual)
+            almacenarToken("" + caracterActual, Categoria.DESCONOCIDO, filaActual, columnaActual)
             obtenerSiguienteCaracter()
         }
     }
 
     //Automata para determinar si es un número entero
     fun esEntero(): Boolean {
-
-        if (carActual.isDigit()) {
+        if (caracterActual == '[') {
             var lexema = ""
             var filaInical = filaActual
             var columnaInicial = columnaActual
             val posicionInicial = posicionActual
 
-            lexema += carActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
-
-            while (carActual.isDigit()) {
-                lexema += carActual
+            while (caracterActual.isDigit()) {
+                lexema += caracterActual
                 obtenerSiguienteCaracter()
             }
-            if (carActual == '.') {
-                hacerBT(posicionInicial, filaInical, columnaInicial)
+            if (caracterActual == ']') {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+                almacenarToken(lexema, Categoria.ENTERO, filaInicial, columnaInicial)
+                return true
+            } else {
+                hacerBT(posicionInicial, filaInicial, columnaInicial)
                 return false
             }
-            almacenarToken(lexema, Categoria.ENTERO, filaInical, columnaInicial)
-            return true
+
+        }
+        return false
+    }
+
+    fun esDecimal(): Boolean {
+        if (caracterActual == '<') {
+            var lexema = ""
+            val columnaInicial = columnaActual
+            val posicionInicial = posicionActual
+            val filaInicial = filaActual
+
+            lexema += caracterActual
+            obtenerSiguienteCaracter()
+            if (caracterActual.isDigit()) {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+
+                while (caracterActual.isDigit()) {
+                    lexema += caracterActual
+                    obtenerSiguienteCaracter()
+                }
+                if (caracterActual == '.') {
+                    lexema += caracterActual
+                    obtenerSiguienteCaracter()
+
+                    while (caracterActual.isDigit()) {
+                        lexema += caracterActual
+                        obtenerSiguienteCaracter()
+                    }
+                }
+                return if (caracterActual == '>') {
+                    lexema += caracterActual
+                    obtenerSiguienteCaracter()
+                    almacenarToken(lexema, Categoria.DECIMAL, filaInicial, columnaInicial)
+                    true
+                } else {
+                    hacerBT(posicionInicial, filaInicial, columnaInicial)
+                    false
+                }
+            }
         }
         return false
     }
 
     //Automata para determinar si es un identificador de variable
-    //Toma como variabletodo lo que tenga un #
-    //Token(Lexema='#casa', Categoria=IDENTIFICADOR_VARIABLE, Fila=0, Columna=15), Token(Lexema='#', Categoria=IDENTIFICADOR_VARIABLE, Fila=0, Columna=20)
     fun esIdentificadorVariable(): Boolean {
-
-        if (carActual == '#') {
+        if (caracterActual == '#') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            val posicionInicial = posicionActual
+            var cantidadCaracteres = 0
 
-            lexema += carActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
-
-            while ((carActual.isLetter() || carActual.isDigit() || (carActual == '_'))) {
-                lexema += carActual
+            while (caracterActual.isDigit() || caracterActual.isLetter() || caracterActual == '_') {
+                lexema += caracterActual
                 obtenerSiguienteCaracter()
+                cantidadCaracteres++
             }
-            if (carActual == '#') {
-                lexema += carActual
+            return if (caracterActual == '#' && cantidadCaracteres <= 10) {
+                lexema += caracterActual
                 obtenerSiguienteCaracter()
+                almacenarToken(lexema, Categoria.IDENTIFICADOR_VARIABLE, filaInicial, columnaInicial)
+                true
+            } else {
+                hacerBT(posicionInicial, filaInicial, columnaInicial)
+                false
             }
-            almacenarToken(lexema, Categoria.IDENTIFICADOR_VARIABLE, filaInical, columnaInicial)
-            return true
         }
-
         return false
     }
 
-    fun esDecimal(): Boolean {
-
-
-        if (carActual == '.' || carActual.isDigit()) {
+    fun esIdentificadorClase(): Boolean {
+        if (caracterActual == '%') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
-            if (carActual == '.') {
-                lexema += carActual
-                obtenerSiguienteCaracter()
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            val posicionInicial = posicionActual
 
-                if (carActual.isDigit()) {
-                    lexema += carActual
-                    obtenerSiguienteCaracter()
-                }
+            lexema += caracterActual
+            obtenerSiguienteCaracter()
+            while (caracterActual.isDigit() || caracterActual.isLetter() || caracterActual == '_') {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+            }
+            return if (caracterActual == '%') {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+                almacenarToken(lexema, Categoria.IDENTIFICADOR_CLASE, filaInicial, columnaInicial)
+                true
             } else {
-                lexema += carActual
-                obtenerSiguienteCaracter()
-
-                while (carActual.isDigit()) {
-                    lexema += carActual
-                    obtenerSiguienteCaracter()
-                }
-                if (carActual == '.') {
-                    lexema += carActual
-                    obtenerSiguienteCaracter()
-                }
+                hacerBT(posicionInicial, filaInicial, columnaInicial)
+                false
             }
-            while (carActual.isDigit()) {
-                lexema += carActual
-                obtenerSiguienteCaracter()
-            }
-            almacenarToken(lexema, Categoria.DECIMAL, filaInical, columnaInicial)
-            return true
         }
         return false
+    }
 
+    fun esIdentificadorMetodos(): Boolean {
+        if (caracterActual == '$') {
+            var lexema = ""
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            val posicionInicial = posicionActual
 
+            lexema += caracterActual
+            obtenerSiguienteCaracter()
+            while (caracterActual.isDigit() || caracterActual.isLetter() || caracterActual == '_') {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+            }
+            return if (caracterActual == '$') {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+                almacenarToken(lexema, Categoria.IDENTIFICADOR_METODO, filaInicial, columnaInicial)
+                true
+            } else {
+                hacerBT(posicionInicial, filaInicial, columnaInicial)
+                false
+            }
+        }
+        return false
+    }
+
+    fun esCadenaCaracteres(): Boolean {
+        if (caracterActual == '*') {
+            var lexema = ""
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            val posicionInicial = posicionActual
+
+            lexema += caracterActual
+            obtenerSiguienteCaracter()
+            while (caracterActual != finCodigo) {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+                if (caracterActual == '*') {
+                    lexema += caracterActual
+                    obtenerSiguienteCaracter()
+                    almacenarToken(lexema, Categoria.CADENA_CARACTERES, filaInicial, columnaInicial)
+                    return true
+                }
+            }
+            lexema += caracterActual
+            obtenerSiguienteCaracter()
+            hacerBT(posicionInicial, filaInicial, columnaInicial)
+        }
+        return false
+    }
+
+    fun esComentarioBloque(): Boolean {
+        if (caracterActual == 'ñ') {
+            var lexema = ""
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            val posicionInicial = posicionActual
+
+            lexema += caracterActual
+            obtenerSiguienteCaracter()
+
+            if (caracterActual == '.') {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+
+                while (caracterActual != finCodigo) {
+                    lexema += caracterActual
+                    obtenerSiguienteCaracter()
+
+                    if (caracterActual == '.') {
+                        lexema += caracterActual
+                        obtenerSiguienteCaracter()
+                        if (caracterActual == 'ñ') {
+                            lexema += caracterActual
+                            obtenerSiguienteCaracter()
+                            almacenarToken(lexema, Categoria.COMENTARIO_BLOQUE, filaInicial, columnaInicial)
+                            return true
+                        } else {
+                            lexema += caracterActual
+                            obtenerSiguienteCaracter()
+                        }
+                    }
+                }
+
+            }
+            lexema += caracterActual
+            obtenerSiguienteCaracter()
+            hacerBT(posicionInicial, filaInicial, columnaInicial)
+        }
+        return false
+    }
+
+    fun esComentarioLinea(): Boolean {
+        if (caracterActual == 'ñ') {
+            var lexema = ""
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+
+            while (caracterActual != '\n' && caracterActual != finCodigo) {
+                lexema += caracterActual
+                obtenerSiguienteCaracter()
+            }
+            almacenarToken(lexema, Categoria.COMENTARIO_LINEA, filaInicial, columnaInicial)
+            return true
+        }
+
+        return false
     }
 
     fun esParentesisIzq(): Boolean {
-        if (carActual == '(') {
+        if (caracterActual == '(') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
-
-            lexema += carActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
-
-            almacenarToken(lexema, Categoria.PARENTESIS, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.PARENTESIS, filaInicial, columnaInicial)
             return true
         }
 
@@ -158,98 +307,101 @@ class AnalizadorLexico(var codigoFuente: String) {
     }
 
     fun esParentesisDer(): Boolean {
-        if (carActual == ')') {
+        if (caracterActual == ')') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
 
-            lexema += carActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
-
-            almacenarToken(lexema, Categoria.PARENTESIS, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.PARENTESIS, filaInicial, columnaInicial)
             return true
         }
 
         return false
     }
+
     fun esLlaveIzq(): Boolean {
-        if (carActual == '{') {
+        if (caracterActual == '{') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
 
-            lexema += carActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
 
-            almacenarToken(lexema, Categoria.LLAVES, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.LLAVES, filaInicial, columnaInicial)
             return true
+
         }
         return false
     }
+
     fun esLlaveDer(): Boolean {
-        if (carActual == '}') {
+        if (caracterActual == '}') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
-
-            lexema += carActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
-
-            almacenarToken(lexema, Categoria.LLAVES, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.LLAVES, filaInicial, columnaInicial)
             return true
         }
         return false
     }
+
     fun esCorcheteIzq(): Boolean {
-        if (carActual == '[') {
+        if (caracterActual == '[') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
 
-            lexema += carActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
 
-            almacenarToken(lexema, Categoria.CORCHETES_IZQ, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.CORCHETES, filaInicial, columnaInicial)
             return true
         }
         return false
     }
+
     fun esCorcheteDer(): Boolean {
-        if (carActual == ']') {
+        if (caracterActual == ']') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
 
-            lexema += carActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
 
-            almacenarToken(lexema, Categoria.CORCHETES_DER, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.CORCHETES, filaInicial, columnaInicial)
             return true
         }
         return false
     }
+
     fun esFinSentencia(): Boolean {
-        if (carActual == '*') {
+        if (caracterActual == '¬') {
             var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
-
-            lexema += carActual
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
-
-            almacenarToken(lexema, Categoria.FIN_SENTENCIA, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.FIN_SENTENCIA, filaInicial, columnaInicial)
             return true
         }
+
         return false
 
     }
-    fun esComa(): Boolean {
-        if (carActual == ',') {
-            var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
 
-            lexema += carActual
+    fun esComa(): Boolean {
+        if (caracterActual == ',') {
+            var lexema = ""
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+
+            lexema += caracterActual
             obtenerSiguienteCaracter()
 
             almacenarToken(lexema, Categoria.SEPARADOR_COMA, filaInical, columnaInicial)
@@ -258,20 +410,19 @@ class AnalizadorLexico(var codigoFuente: String) {
         return false
 
     }
-    fun esPunto(): Boolean {
-        if (carActual == '.') {
-            var lexema = ""
-            var filaInical = filaActual
-            var columnaInicial = columnaActual
 
-            lexema += carActual
+    fun esPunto(): Boolean {
+        if (caracterActual == '.') {
+            var lexema = ""
+            val filaInicial = filaActual
+            val columnaInicial = columnaActual
+            lexema += caracterActual
             obtenerSiguienteCaracter()
 
-            almacenarToken(lexema, Categoria.SEPARADOR_PUNTO, filaInical, columnaInicial)
+            almacenarToken(lexema, Categoria.SEPARADOR_PUNTO, filaInicial, columnaInicial)
             return true
         }
         return false
-
     }
 
 //    fun esDosPunto(): Boolean {
@@ -290,19 +441,33 @@ class AnalizadorLexico(var codigoFuente: String) {
 //
 //    }
 
-    fun obtenerSiguienteCaracter() {
-        carActual = if (posicionActual == codigoFuente.length - 1) {
-            finCodigo
-        } else {
-            if (carActual == '\n') {
-                filaActual++
-                columnaActual = 0
-            } else {
-                columnaActual++
+    fun esPalabraReservada(): Boolean {
+        var lexema = ""
+        val filaInicial = filaActual
+        val columnaInicial = columnaActual
+        val posicionInicial = posicionActual
+
+        for (palabra in listaPalabrasReservadas) {
+            if (caracterActual == palabra[0]) {
+                var centinela = true
+                for (caracter in palabra) {
+                    if (caracter == caracterActual) {
+                        lexema += caracterActual
+                        obtenerSiguienteCaracter()
+                    } else {
+                        centinela = false
+                        lexema =""
+                        hacerBT(posicionInicial, filaInicial, columnaInicial)
+                        break
+                    }
+                }
+                if (centinela) {
+                    almacenarToken(lexema, Categoria.PALABRA_RESERVADA, filaInicial, columnaInicial)
+                    return true
+                }
             }
-            posicionActual++
-            codigoFuente[posicionActual]
         }
+        return false
     }
 
 }
