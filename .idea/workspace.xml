@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="">
+    <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/Error.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/AnalizadorSintactico.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Argumento.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Caracter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Funcion.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Identificador.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorClase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorMetodo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorVariable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Sentencia.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/UnidadDeCompilacion.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/prueba/Aplicacion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/prueba/Aplicacion.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -25,14 +56,14 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Universidad/20222/Compi/ProyectoCompi/compiladores",
+    "last_opened_file_path": "D:/Universidad/Compiladores/ProyectoFinal/compiladores",
     "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.AplicacionKt">
     <configuration name="Aplicacion" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.compiladores.proyecto.app.Aplicacion" />
       <module name="ProyectoCompiladores" />
@@ -40,8 +71,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AplicacionKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.compiladores.proyecto.AplicacionKt" />
+      <module name="ProyectoCompiladores" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.AplicacionKt" />
         <item itemvalue="Kotlin.Aplicacion" />
       </list>
     </recent_temporary>
@@ -60,5 +99,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Alejandro" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo" />
   </component>
 </project>
