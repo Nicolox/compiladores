@@ -1,5 +1,5 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class Lectura :Sentencia()
+class Lectura(var expresion: Expresion) :Sentencia()
 {
 }

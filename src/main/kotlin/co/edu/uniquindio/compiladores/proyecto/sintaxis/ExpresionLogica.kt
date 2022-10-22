@@ -1,5 +1,7 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class ExpresionLogica
+import co.edu.uniquindio.compiladores.proyecto.lexico.Token
+
+class ExpresionLogica(var operadorLogico: Token) : Expresion()
 {
 }

@@ -1,5 +1,5 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class Retorno : Sentencia()
+class Retorno (var expresion: Expresion): Sentencia()
 {
 }

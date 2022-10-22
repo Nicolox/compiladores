@@ -1,4 +1,5 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class InvocacionFuncion :Sentencia() {
+class InvocacionFuncion(var nombreFuncion: Funcion, var argumentos: ArrayList<Argumento>) :Sentencia()
+{
 }

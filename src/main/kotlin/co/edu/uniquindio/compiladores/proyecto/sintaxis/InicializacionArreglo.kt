@@ -1,5 +1,7 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class InicializacionArreglo
+import co.edu.uniquindio.compiladores.proyecto.lexico.Token
+
+class InicializacionArreglo(var nombre: Token)
 {
 }

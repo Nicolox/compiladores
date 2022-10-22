@@ -1,6 +1,8 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class Argumento
+import co.edu.uniquindio.compiladores.proyecto.lexico.Token
+
+class Argumento (var nombreArgumento: Token)
 {
 
 }

@@ -60,6 +60,56 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
     }
 
     /**
+     * <Expresion> ::= <ExpresionAritmetica> | <ExpresionCadena> | <ExpresionLogica> | <ExpresionRelacional>
+     */
+    fun esExpresion(): Expresion?
+    {
+        var e: Expresion?
+        e = esExpresionLogica()
+        if (e != null)
+        {
+            return e
+        }
+        e = esExpresionAritmética()
+        if (e != null) {
+            return e
+        }
+        e = esExpresionRelacional()
+        if (e != null)
+        {
+            return e
+        }
+        e = esExpresionCadena()
+        if (e != null)
+        {
+            return e
+        }
+        return null
+    }
+
+    /**
+     * <Identificador> ::=  <IdentificadorVariable> | <IdentificadorMetodo> | <IdentificadorClase>
+     */
+    fun esIdentificador(): Identificador?
+    {
+        var i: Identificador?
+        i = esIdentificadorMetodo()
+        if (i != null) {
+            return i
+        }
+        i = esIdentificadorClase()
+        if (i != null) {
+            return i
+        }
+        i = esIdentificadorVariable()
+        if (i!=null)
+        {
+            return i
+        }
+        return null
+    }
+
+    /**
      * <Sentencia> ::= <Decision> | <DeclaraciónVariables> | <Asignacion> | <Impresion> | <CicloFor> |
      * <retorno> | <Lectura> | <InvocacionFuncion> | <Incremento/Decremento> | <Funcion>
      */
@@ -153,13 +203,6 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
     }
 
     /**
-     * <Identificador> ::=  <IdentificadorVariable> | <IdentificadorMetodo> | <IdentificadorClase>
-     */
-    fun esIdentificador(): Identificador? {
-        return null
-    }
-
-    /**
      * <IdentificadorMetodo> ::=  "$" <ListaDeCaracteres> "$"
      */
     fun esIdentificadorMetodo(): IdentificadorMetodo? {
@@ -217,7 +260,8 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
     }
 
     /**
-     * <ListaDeCaracteres> ::= <Caracter> <ListaDeCaracteres>
+     * <Decision> ::= “dsc” Si “(“ <ExpresiónLogica> “)” “{“ <ListaDeSentencias> “}” Sino “{“
+     * <ListaDeSentencias> “}”
      */
     fun esDecision(): Decision?
     {

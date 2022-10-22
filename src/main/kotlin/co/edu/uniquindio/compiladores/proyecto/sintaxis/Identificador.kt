@@ -1,5 +1,5 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class Identificador
+open class Identificador
 {
 }

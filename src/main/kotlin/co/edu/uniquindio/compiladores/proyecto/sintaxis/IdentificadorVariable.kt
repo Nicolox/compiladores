@@ -1,5 +1,7 @@
 package co.edu.uniquindio.compiladores.proyecto.sintaxis
 
-class IdentificadorVariable
+import co.edu.uniquindio.compiladores.proyecto.lexico.Token
+
+class IdentificadorVariable(var nombreIdentificador: Token): Identificador()
 {
 }
