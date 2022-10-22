@@ -4,31 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Asignacion.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Decision.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/DeclaracionVariable.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionLogica.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorClase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Impresion.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IncrementoDecremento.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/InvocacionFuncion.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Lectura.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Retorno.kt" afterDir="false" />
+    <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="Se agregan mas clases necesarias, herencia de sentencia y algunos metodos necesarios">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/DeclaracionArreglo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Expresion.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionAritmetica.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionCadena.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionRelacional.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/InicializacionArreglo.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Sumatoria.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/META-INF/ProyectoCompiladores.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/META-INF/ProyectoCompiladores.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/AplicacionKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/AplicacionKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/controladores/InicioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/controladores/InicioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Token.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/AnalizadorSintactico.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/AnalizadorSintactico.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Caracter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/CicloFor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Funcion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Funcion.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorClase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Sentencia.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Sentencia.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666382077964</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Se agregan mas clases necesarias, herencia de sentencia y algunos metodos necesarios">
+      <created>1666390987420</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666390987420</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +133,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo" />
+    <MESSAGE value="Se agregan mas clases necesarias, herencia de sentencia y algunos metodos necesarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agregan mas clases necesarias, herencia de sentencia y algunos metodos necesarios" />
   </component>
 </project>

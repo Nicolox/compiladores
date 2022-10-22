@@ -209,6 +209,9 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
         return null
     }
 
+    /**
+     * <Argumento> ::= <Identificador>
+     */
     fun esArgumento(): Argumento? {
         return null
     }
@@ -221,47 +224,129 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
         return null
     }
 
+    /**
+     * mut <PalabrasReservadas>  <IdentificadorVariable> [<Asignación>] |
+     * inmut  <PalabrasReservadas>  <IdentificadorVariable> [<Asignación>]
+     */
     fun declaracionVariable(): DeclaracionVariable?
     {
         return null
     }
 
-    fun esExpresionLogica(): ExpresionLogica?
-    {
-        return null
-    }
-
+    /**
+     * <Impresion> ::= print “(” <Expresión> “)” “¬”
+     */
     fun esImpresion(): Impresion?
     {
         return null
     }
 
+    /**
+     *  <Incremento|Decremento> ::= “ss” | “rr”
+     */
     fun esIncrementoDecremento(): IncrementoDecremento?
     {
         return null
     }
 
+    /**
+     * <InvocacionFuncion> ::= <IdentificadorMétodo> <ListaArgumentos>
+     */
     fun esInvocacionFuncion(): InvocacionFuncion?
     {
         return null
     }
 
+    /**
+     * <CicloFor> ::= “crc” “(“ <DeclaraciónVariable> “¬” <ExpresionLogica>“¬”
+     * <Incremento/Decremento> “¬” “)” “{“ <ListaSentencias> “}”
+     */
     fun esCicloFor(): CicloFor?
     {
         return null
     }
+
+    /**
+     * <Lectura> ::= read “(” <Expresión> “)” “¬”
+     */
     fun esLectura(): Lectura?
     {
         return null
     }
 
+    /**
+     * <Retorno> ::= return <Expresión> “¬”
+     */
     fun esRetorno(): Retorno?
     {
         return null
     }
 
+    /**
+     * <Asignación> ::= “:” | <número> | <cadena> | <InvocaciónFunción> “¬”
+     */
     fun esAsignacion(): Asignacion?
     {
         return null
     }
+
+    /**
+     * <Sumatoria> ::= summ “(“ <Identificador> “)” “¬”
+     */
+    fun esSumatoria(): Sumatoria?
+    {
+        return null
+    }
+
+    /**
+     * <ExpresiónRelacional> ::= <Expresión> <operadorRelacional> <Expresión>
+     */
+    fun esExpresionRelacional(): ExpresionRelacional?
+    {
+        return null
+    }
+
+    /**
+     * <ExpresiónAritmetica> ::= <numero> | <identificadorVariable> | <ExpresiónAritmetica> <operadorAritmetico>
+     *     <ExpresiónAritmetica> |“(” <ExpresiónAritmetica>”)”
+     */
+    fun esExpresionAritmética(): ExpresionAritmetica?
+    {
+        return null
+    }
+
+    /**
+     *<ExpresiónCadena> ::= <cadena> [“+” <identificadorVariable>]
+     */
+    fun esExpresionCadena(): ExpresionCadena?
+    {
+        return null
+    }
+
+    /**
+     * <ExpresiónLogica> ::= <ExpresiónRelacional> <operadorLogico> <ExpresiónLogica>
+     */
+    fun esExpresionLogica(): ExpresionLogica?
+    {
+        return null
+    }
+
+    /**
+     * <DeclaraciónArreglo> ::= array <PalabrasReservadas> <IdentificadorVariable> [“:” array
+     * <PalabrasReservadas>]  “¬”
+     */
+    fun esDeclaracionArreglo(): DeclaracionArreglo
+    {
+        return null
+    }
+
+
+    /**
+     * <InicializacionArreglo> ::=<IdentificadorVariable> “:” array <PalabrasReservadas> “¬”
+     */
+    fun esInicializacionArreglo(): InicializacionArreglo
+    {
+
+    }
+
 }
