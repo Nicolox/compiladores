@@ -335,7 +335,7 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      * <DeclaraciónArreglo> ::= array <PalabrasReservadas> <IdentificadorVariable> [“:” array
      * <PalabrasReservadas>]  “¬”
      */
-    fun esDeclaracionArreglo(): DeclaracionArreglo
+    fun esDeclaracionArreglo(): DeclaracionArreglo?
     {
         return null
     }
@@ -344,9 +344,9 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
     /**
      * <InicializacionArreglo> ::=<IdentificadorVariable> “:” array <PalabrasReservadas> “¬”
      */
-    fun esInicializacionArreglo(): InicializacionArreglo
+    fun esInicializacionArreglo(): InicializacionArreglo?
     {
-
+        return null
     }
 
 }
