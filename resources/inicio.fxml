@@ -3,17 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="508.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.compiladores.proyecto.controladores.InicioController">
-   <children>
+<AnchorPane prefHeight="508.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.compiladores.proyecto.controladores.InicioController2">
       <Button fx:id="botonAnalizar" layoutX="251.0" layoutY="14.0" mnemonicParsing="false" onAction="#analizarLexema" text="Analizar lexema" />
-      <TextArea fx:id="texto" layoutX="24.0" layoutY="55.0" prefHeight="184.0" prefWidth="551.0" />
+      <TextArea fx:id="codigoFuente" layoutX="24.0" layoutY="55.0" prefHeight="184.0" prefWidth="551.0" />
       <TableView fx:id="tokens" layoutX="24.0" layoutY="257.0" prefHeight="200.0" prefWidth="551.0">
         <columns>
           <TableColumn fx:id="lexema" prefWidth="187.0" text="Lexema" />
           <TableColumn fx:id="categoria" prefWidth="173.0" text="Categoría" />
-            <TableColumn fx:id="fila" prefWidth="98.0" text="Fila" />
-            <TableColumn fx:id="columna" prefWidth="92.0" text="Columna" />
+          <TableColumn fx:id="fila" prefWidth="98.0" text="Fila" />
+          <TableColumn fx:id="columna" prefWidth="92.0" text="Columna" />
         </columns>
       </TableView>
-   </children>
 </AnchorPane>
