@@ -1,12 +1,16 @@
 package co.edu.uniquindio.compiladores.proyecto
 
 import co.edu.uniquindio.compiladores.proyecto.lexico.AnalizadorLexico
+import co.edu.uniquindio.compiladores.proyecto.sintaxis.AnalizadorSintactico
 
 fun main() {
 
-    val lexico = AnalizadorLexico("")
+    val lexico = AnalizadorLexico("met $$ (){}")
     lexico.analizar()
     print(lexico.listaTokens)
+
+    val sintaxis=AnalizadorSintactico(lexico.listaTokens)
+    print(sintaxis.esFuncion())
 }
 //    fun esPrimo(numero: Int): Boolean {
 //        for (i in 2..numero / 2) {
