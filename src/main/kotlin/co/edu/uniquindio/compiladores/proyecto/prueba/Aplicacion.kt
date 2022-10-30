@@ -4,7 +4,7 @@ import co.edu.uniquindio.compiladores.proyecto.lexico.AnalizadorLexico
 
 fun main() {
 
-    val lexico = AnalizadorLexico("//")
+    val lexico = AnalizadorLexico("")
     lexico.analizar()
     print(lexico.listaTokens)
 }
