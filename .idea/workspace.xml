@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/META-INF/ProyectoCompiladores.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/META-INF/ProyectoCompiladores.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/AplicacionKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/AplicacionKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/app/Aplicacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/controladores/InicioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/controladores/InicioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoCompiladores/co/edu/uniquindio/compiladores/proyecto/lexico/Token.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Universidad/20222/Compi/ProyectoCompi/compiladores",
+    "last_opened_file_path": "C:/Users/juan_/Desktop/Universidad/compiladores",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -55,10 +62,22 @@
       <option name="presentableId" value="Default" />
       <updated>1664395314128</updated>
       <workItem from="1664395316450" duration="1210000" />
+      <workItem from="1667088982074" duration="163000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
