@@ -220,6 +220,12 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esIdentificadorVariable(): IdentificadorVariable?
     {
+        if (tokenActual.categoria == Categoria.IDENTIFICADOR_VARIABLE) {
+            return IdentificadorVariable(tokenActual)
+        } else {
+            reportarError("No es un identificador de variable valido")
+        }
+
         return null
     }
 
@@ -228,6 +234,12 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esIdentificadorClase(): IdentificadorClase?
     {
+        if (tokenActual.categoria == Categoria.IDENTIFICADOR_CLASE) {
+            return IdentificadorClase(tokenActual)
+        } else {
+            reportarError("No es un identificador de metodo valido")
+        }
+
         return null
     }
 

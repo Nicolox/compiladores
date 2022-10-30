@@ -7,23 +7,6 @@
     <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="Ahora si se corrigen los errores de los metodos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/AnalizadorSintactico.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/AnalizadorSintactico.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Argumento.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Argumento.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Decision.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Decision.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/DeclaracionArreglo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/DeclaracionArreglo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/DeclaracionVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/DeclaracionVariable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionCadena.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionCadena.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionLogica.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionLogica.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionRelacional.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionRelacional.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Identificador.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Identificador.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorClase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorClase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorMetodo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorMetodo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IdentificadorVariable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Impresion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Impresion.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IncrementoDecremento.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/IncrementoDecremento.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/InicializacionArreglo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/InicializacionArreglo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/InvocacionFuncion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/InvocacionFuncion.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Lectura.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Lectura.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Retorno.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Retorno.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +43,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/Universidad/Compiladores/ProyectoFinal/compiladores",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
-  <component name="RunManager" selected="Kotlin.AplicacionKt">
+  <component name="RunManager" selected="Kotlin.Aplicacion">
     <configuration name="Aplicacion" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.compiladores.proyecto.app.Aplicacion" />
       <module name="ProyectoCompiladores" />
@@ -83,8 +70,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.AplicacionKt" />
         <item itemvalue="Kotlin.Aplicacion" />
+        <item itemvalue="Kotlin.AplicacionKt" />
       </list>
     </recent_temporary>
   </component>
@@ -97,6 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664395314128</updated>
       <workItem from="1664395316450" duration="1210000" />
+      <workItem from="1667158956362" duration="1321000" />
     </task>
     <task id="LOCAL-00001" summary="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo">
       <created>1666382077964</created>
@@ -143,7 +131,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Alejandro" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
