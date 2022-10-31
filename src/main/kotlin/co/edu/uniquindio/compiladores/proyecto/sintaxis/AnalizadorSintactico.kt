@@ -268,15 +268,63 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      * <Argumento> ::= <Identificador>
      */
     fun esArgumento(): Argumento? {
+        var s: Identificador?
+        s = esIdentificadorMetodo()
+        if (s != null) {
+            return Argumento(s)
+        }
+        s = esIdentificadorClase()
+        if (s != null) {
+            return Argumento(s)
+        }
+        s = esIdentificadorVariable()
+        if (s!=null)
+        {
+            return Argumento(s)
+        }
         return null
     }
 
     /**
-     * <Decision> ::= “dsc” Si “(“ <ExpresiónLogica> “)” “{“ <ListaDeSentencias> “}” Sino “{“
-     * <ListaDeSentencias> “}”
+     * <Decision> ::= “dsc” Si “(“ <ExpresiónLogica> “)” “{“ <ListaDeSentencias> “}” [Sino “{“
+     * <ListaDeSentencias> “}” ]
      */
     fun esDecision(): Decision?
     {
+        if (tokenActual.categoria==Categoria.PALABRA_RESERVADA&&tokenActual.lexema=="dsc")
+        {
+            obtenerSiguienteToken()
+            if (tokenActual.categoria==Categoria.PALABRA_RESERVADA&&tokenActual.lexema=="Si")
+            {
+                obtenerSiguienteToken()
+                if (tokenActual.categoria==Categoria.PARENTESIS_IZQUIERDO)
+                {
+                    obtenerSiguienteToken()
+                    val expresion=esExpresionLogica()
+                    if (expresion!=null)
+                    {
+                        obtenerSiguienteToken()
+                        if (tokenActual.categoria==Categoria.PARENTESIS_DERECHO)
+                        {
+                            obtenerSiguienteToken()
+                            if(tokenActual.categoria==Categoria.LLAVE_IZQUIERDA)
+                            {
+                                obtenerSiguienteToken()
+                                val listaSentencias=esListaDeSentencias()
+                                if (listaSentencias!=null)
+                                {
+                                    obtenerSiguienteToken()
+                                    if(tokenActual.categoria==Categoria.LLAVE_DERECHA)
+                                    {
+                                        return Decision(expresion, listaSentencias)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         return null
     }
 
@@ -294,6 +342,45 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esImpresion(): Impresion?
     {
+        if(tokenActual.categoria==Categoria.PALABRA_RESERVADA&&tokenActual.lexema=="print")
+        {
+            obtenerSiguienteToken()
+            if(tokenActual.categoria==Categoria.PARENTESIS_IZQUIERDO)
+            {
+                obtenerSiguienteToken()
+                val expresion=esExpresion()
+                if(expresion!=null)
+                {
+                    obtenerSiguienteToken()
+                    if(tokenActual.categoria==Categoria.PARENTESIS_DERECHO)
+                    {
+                        obtenerSiguienteToken()
+                        if(tokenActual.categoria==Categoria.FIN_SENTENCIA)
+                        {
+                            return Impresion(expresion)
+                        }
+                        else
+                        {
+                            reportarError("Falta el símbolo de fin sentencia '¬'")
+                        }
+                    }
+                    else
+                    {
+                        reportarError("Falta el paréntesis derecho ')'")
+                    }
+                }
+                else
+                {
+                    reportarError("No hay una expresión válida")
+                }
+            }
+            else
+            {
+                reportarError("Falta el paréntesis izquierdo '('")
+            }
+        }
+
+        reportarError("Para imprimir necesita la palabra 'print' al principio")
         return null
     }
 
@@ -302,6 +389,16 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esIncrementoDecremento(): IncrementoDecremento?
     {
+        if (tokenActual.categoria==Categoria.INCREMENTO&&tokenActual.lexema=="ss")
+        {
+            return IncrementoDecremento(true)
+        }
+        else if(tokenActual.categoria==Categoria.DECREMENTO&&tokenActual.lexema=="rr")
+        {
+            return IncrementoDecremento(false)
+        }
+
+        reportarError("No es un indicador válido de incremento o decremento")
         return null
     }
 
@@ -327,6 +424,45 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esLectura(): Lectura?
     {
+        if(tokenActual.categoria==Categoria.PALABRA_RESERVADA&&tokenActual.lexema=="read")
+        {
+            obtenerSiguienteToken()
+            if(tokenActual.categoria==Categoria.PARENTESIS_IZQUIERDO)
+            {
+                obtenerSiguienteToken()
+                val expresion=esExpresion()
+                if(expresion!=null)
+                {
+                    obtenerSiguienteToken()
+                    if(tokenActual.categoria==Categoria.PARENTESIS_DERECHO)
+                    {
+                        obtenerSiguienteToken()
+                        if(tokenActual.categoria==Categoria.FIN_SENTENCIA)
+                        {
+                            return Lectura(expresion)
+                        }
+                        else
+                        {
+                            reportarError("Falta el símbolo de fin sentencia '¬'")
+                        }
+                    }
+                    else
+                    {
+                        reportarError("Falta el paréntesis derecho ')'")
+                    }
+                }
+                else
+                {
+                    reportarError("No hay una expresión válida")
+                }
+            }
+            else
+            {
+                reportarError("Falta el paréntesis izquierdo '('")
+            }
+        }
+
+        reportarError("Para leer necesita la palabra 'read' al principio")
         return null
     }
 
@@ -335,6 +471,29 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esRetorno(): Retorno?
     {
+        if(tokenActual.categoria==Categoria.PALABRA_RESERVADA&&tokenActual.lexema=="read")
+        {
+            obtenerSiguienteToken()
+            val expresion=esExpresion()
+            if(expresion!=null)
+            {
+                obtenerSiguienteToken()
+                if(tokenActual.categoria==Categoria.FIN_SENTENCIA)
+                {
+                    return Retorno(expresion)
+                }
+                else
+                {
+                    reportarError("Falta el símbolo de fin sentencia '¬'")
+                }
+            }
+            else
+            {
+                reportarError("No hay una expresión válida")
+            }
+        }
+
+        reportarError("Para hacer un retorno necesita la palabra 'return' al principio")
         return null
     }
 
@@ -347,10 +506,49 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
     }
 
     /**
-     * <Sumatoria> ::= summ “(“ <Identificador> “)” “¬”
+     * <Sumatoria> ::= summ “(“ <IdentificadorVariable> “)” “¬”
      */
     fun esSumatoria(): Sumatoria?
     {
+        if(tokenActual.categoria==Categoria.PALABRA_RESERVADA&&tokenActual.lexema=="summ")
+        {
+            obtenerSiguienteToken()
+            if(tokenActual.categoria==Categoria.PARENTESIS_IZQUIERDO)
+            {
+                obtenerSiguienteToken()
+                val identificador=esIdentificadorVariable()
+                if(identificador!=null)
+                {
+                    obtenerSiguienteToken()
+                    if(tokenActual.categoria==Categoria.PARENTESIS_DERECHO)
+                    {
+                        obtenerSiguienteToken()
+                        if(tokenActual.categoria==Categoria.FIN_SENTENCIA)
+                        {
+                            return Sumatoria(identificador)
+                        }
+                        else
+                        {
+                            reportarError("Falta el símbolo de fin sentencia '¬'")
+                        }
+                    }
+                    else
+                    {
+                        reportarError("Falta el paréntesis derecho ')'")
+                    }
+                }
+                else
+                {
+                    reportarError("No existe un identificador de variable válido")
+                }
+            }
+            else
+            {
+                reportarError("Falta el paréntesis izquierdo '('")
+            }
+        }
+
+        reportarError("Para realizar una sumatoria necesita la palabra 'summ' al principio")
         return null
     }
 

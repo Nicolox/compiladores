@@ -18,9 +18,13 @@ class AnalizadorLexico(var codigoFuente: String) {
         "cls",
         "return",
         "print",
+        "read",
         "true",
         "app",
-        "met"
+        "met",
+        "Si",
+        "Sino",
+        "summ",
     )
 
     fun almacenarToken(lexema: String, cat: Categoria, fila: Int, columna: Int) =

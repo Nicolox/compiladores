@@ -2,6 +2,7 @@ package co.edu.uniquindio.compiladores.proyecto.controladores
 
 import co.edu.uniquindio.compiladores.proyecto.lexico.AnalizadorLexico
 import co.edu.uniquindio.compiladores.proyecto.lexico.Token
+import co.edu.uniquindio.compiladores.proyecto.sintaxis.AnalizadorSintactico
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
 import javafx.event.ActionEvent
@@ -48,6 +49,9 @@ class InicioController2 {
             lexico.analizar()
 
             print (lexico.listaTokens)
+
+            val sintaxis= AnalizadorSintactico(lexico.listaTokens)
+            print(sintaxis.esFuncion())
         }
 
     }
