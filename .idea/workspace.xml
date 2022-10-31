@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cdaca372-be51-4714-90af-cffa1617bca5" name="Changes" comment="Se configuro la interaz para el analizador lexico" />
+    <list id="537034da-c593-4ef7-a982-93083fe7f953" name="Changes by Alejandro" comment="Changes by Alejandro" />
+    <list id="6fab973d-eeba-4006-b810-28ee4c4b5021" name="Changes by juan_" comment="Changes by juan_" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ESfmXqdvpwl1tHPxyHETanHQsb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/IdeaProjects/compiladores-main&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.2562432&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Kotlin.Aplicacion">
+    <configuration name="Aplicacion" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.compiladores.proyecto.app.Aplicacion" />
+      <module name="ProyectoCompiladores" />
+      <shortenClasspath name="NONE" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Usuario\Documents\Personal\Universidad\Compi\javafx-sdk-19\lib --add-modules=javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AplicacionKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.compiladores.proyecto.AplicacionKt" />
+      <module name="ProyectoCompiladores" />
+      <shortenClasspath name="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Kotlin.Aplicacion" />
+      <item itemvalue="Kotlin.AplicacionKt" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.Aplicacion" />
+        <item itemvalue="Kotlin.AplicacionKt" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cdaca372-be51-4714-90af-cffa1617bca5" name="Changes" comment="" />
+      <created>1662594073439</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662594073439</updated>
+      <workItem from="1663367982329" duration="20503000" />
+      <workItem from="1664394141964" duration="1273000" />
+      <workItem from="1665263016489" duration="1730000" />
+      <workItem from="1666837490692" duration="38000" />
+      <workItem from="1666837589791" duration="6247000" />
+      <workItem from="1667248992224" duration="372000" />
+    </task>
+    <task id="LOCAL-00001" summary="Primer Video">
+      <created>1663289240759</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663289240759</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Respaldo">
+      <created>1663361924222</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1663361924222</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Respaldo2.0">
+      <created>1663370704708</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1663370704708</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Ajuste de métodos&#10;Se agregaron metodos faltantes">
+      <created>1663390201171</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1663390201171</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Ajuste de métodos&#10;Se agregaron metodos faltantes y corrige push">
+      <created>1663390327686</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1663390327686</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Se configuro la interaz para el analizador lexico">
+      <created>1666845276984</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666845276984</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Primer Video" />
+    <MESSAGE value="Respaldo" />
+    <MESSAGE value="Respaldo2.0" />
+    <MESSAGE value="Ajuste de métodos&#10;Se agregaron metodos faltantes" />
+    <MESSAGE value="Ajuste de métodos&#10;Se agregaron metodos faltantes y corrige push" />
+    <MESSAGE value="Se configuro la interaz para el analizador lexico" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se configuro la interaz para el analizador lexico" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

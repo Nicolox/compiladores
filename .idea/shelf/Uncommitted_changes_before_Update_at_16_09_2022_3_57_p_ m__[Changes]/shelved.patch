@@ -1,0 +1,108 @@
+Index: src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/AnalizadorLexico.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.edu.uniquindio.compiladores.proyecto\r\n\r\nclass AnalizadorLexico (var codigoFuente:String){\r\n\r\n    var posicionActual = 0\r\n    var carActual = codigoFuente[0]\r\n    var listaTokens = ArrayList<Token>()\r\n    var finCodigo = 0.toChar()\r\n    var filaActual = 0\r\n    var columnaActual = 0\r\n\r\n    fun almacenarToken(lexema:String, cat:Categoria, fila:Int, columna:Int) = listaTokens.add(Token(lexema,cat,fila,columna))\r\n    fun hacerBT(posicionInicial:Int, filaInical:Int,columnaInicial:Int){\r\n        posicionActual = posicionInicial\r\n        filaActual = filaInical\r\n        columnaActual = columnaInicial\r\n\r\n        carActual = codigoFuente[posicionActual]\r\n    }\r\n    fun analizar(){\r\n\r\n        while (carActual != finCodigo){\r\n\r\n            if(carActual == ' '|| carActual == '\\t'|| carActual == '\\n'){\r\n                obtenerSiguienteCaracter()\r\n                continue\r\n            }\r\n            if (esEntero())continue\r\n            if (esDecimal())continue\r\n            if (esIdentificadorVariable())continue\r\n\r\n            almacenarToken(\"\" + carActual,Categoria.DESCONOCIDO,filaActual,columnaActual)\r\n            obtenerSiguienteCaracter()\r\n        }\r\n    }\r\n    //Automata para determinar si es un número entero\r\n    fun esEntero():Boolean{\r\n\r\n        if (carActual.isDigit()){\r\n            var lexema= \"\"\r\n            var filaInical = filaActual\r\n            var columnaInicial = columnaActual\r\n            val posicionInicial = posicionActual\r\n\r\n            lexema+=carActual\r\n            obtenerSiguienteCaracter()\r\n\r\n            while (carActual.isDigit()){\r\n                lexema+=carActual\r\n                obtenerSiguienteCaracter()\r\n            }\r\n            if(carActual == '.'){\r\n                hacerBT(posicionInicial,filaInical,columnaInicial)\r\n                return false\r\n            }\r\n            almacenarToken(lexema,Categoria.ENTERO,filaInical,columnaInicial)\r\n            return true\r\n        }\r\n        return false\r\n    }\r\n\r\n    //Automata para determinar si es un identificador de variable\r\n    //Toma como variabletodo lo que tenga un #\r\n    //Token(Lexema='#casa', Categoria=IDENTIFICADOR_VARIABLE, Fila=0, Columna=15), Token(Lexema='#', Categoria=IDENTIFICADOR_VARIABLE, Fila=0, Columna=20)\r\n    fun esIdentificadorVariable():Boolean{\r\n\r\n        if (carActual == '#'){\r\n            var lexema= \"\"\r\n            var filaInical = filaActual\r\n            var columnaInicial = columnaActual\r\n\r\n            lexema+=carActual\r\n            obtenerSiguienteCaracter()\r\n\r\n            while ((carActual.isLetter() || carActual.isDigit() || (carActual == '_'))){\r\n                lexema+=carActual\r\n                obtenerSiguienteCaracter()\r\n            }\r\n            if (carActual == '#') {\r\n                lexema += carActual\r\n                obtenerSiguienteCaracter()\r\n            }\r\n            almacenarToken(lexema,Categoria.IDENTIFICADOR_VARIABLE,filaInical,columnaInicial)\r\n            return true\r\n        }\r\n\r\n        return false\r\n    }\r\n\r\n    fun esDecimal(): Boolean{\r\n\r\n\r\n        if(carActual == '.' || carActual.isDigit()){\r\n            var lexema= \"\"\r\n            var filaInical = filaActual\r\n            var columnaInicial = columnaActual\r\n            if (carActual == '.'){\r\n                lexema += carActual\r\n                obtenerSiguienteCaracter()\r\n\r\n                if (carActual.isDigit()){\r\n                    lexema += carActual\r\n                    obtenerSiguienteCaracter()\r\n                }\r\n            }else {\r\n                lexema += carActual\r\n                obtenerSiguienteCaracter()\r\n\r\n                while (carActual.isDigit()){\r\n                    lexema += carActual\r\n                    obtenerSiguienteCaracter()\r\n                }\r\n                if (carActual == '.') {\r\n                    lexema += carActual\r\n                    obtenerSiguienteCaracter()\r\n                }\r\n            }\r\n            while (carActual.isDigit()){\r\n                lexema += carActual\r\n                obtenerSiguienteCaracter()\r\n            }\r\n            almacenarToken(lexema,Categoria.DECIMAL,filaInical,columnaInicial)\r\n            return true\r\n        }\r\n        return false\r\n\r\n\r\n\r\n    }\r\n    fun obtenerSiguienteCaracter(){\r\n        carActual = if (posicionActual == codigoFuente.length-1){\r\n            finCodigo\r\n        }else {\r\n            if (carActual == '\\n'){\r\n                filaActual++\r\n                columnaActual = 0\r\n            }else {\r\n                columnaActual++\r\n            }\r\n            posicionActual++\r\n            codigoFuente[posicionActual]\r\n        }\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/AnalizadorLexico.kt b/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/AnalizadorLexico.kt
+--- a/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/AnalizadorLexico.kt	(revision 1c28288e1b607cdef894a1fa62470b4f16ba5fe2)
++++ b/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/AnalizadorLexico.kt	(date 1663361782217)
+@@ -28,7 +28,20 @@
+             if (esEntero())continue
+             if (esDecimal())continue
+             if (esIdentificadorVariable())continue
+-
++            if (esParentesisAbrir())continue
++//            if (esParentesisCerrar())continue
++//            if (esLlave())continue
++//            if (esCorchete())continue
++//            if (esFinSentencia())continue
++//            if (esComa())continue
++//            if (esPunto())continue
++//            if (esPalabraEntero())continue
++//            if (esPalabraReal())continue
++//            if (esPalabraCadenaCaracteres())continue
++//            if (esPalabraCararter())continue
++//            if (esPalabraDecision())continue
++//            if (esPalabraCiclo())continue
++//            if (esClase())continue
+             almacenarToken("" + carActual,Categoria.DESCONOCIDO,filaActual,columnaActual)
+             obtenerSiguienteCaracter()
+         }
+@@ -126,6 +139,25 @@
+ 
+ 
+ 
++    }
++
++    fun esParentesisAbrir():Boolean{
++        if (carActual.code == 39) {
++            var lexema = ""
++            var filaInical = filaActual
++            var columnaInicial = columnaActual
++
++            lexema += carActual
++            obtenerSiguienteCaracter()
++
++//            while ((carActual.isLetter() || carActual.isDigit() || (carActual == '_'))) {
++//                lexema += carActual
++//                obtenerSiguienteCaracter()
++//            }
++            almacenarToken(lexema,Categoria.PARENTESIS,filaInical,columnaInicial)
++            return true
++        }
++        return false
+     }
+     fun obtenerSiguienteCaracter(){
+         carActual = if (posicionActual == codigoFuente.length-1){
+Index: src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Categoria.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.edu.uniquindio.compiladores.proyecto\r\n\r\nenum class Categoria {\r\nENTERO, DECIMAL, IDENTIFICADOR, OPERADOR_ARITMETICO,OPERADOR_LOGICO,PARENTESIS_IZQ, DESCONOCIDO, IDENTIFICADOR_VARIABLE\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Categoria.kt b/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Categoria.kt
+--- a/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Categoria.kt	(revision 1c28288e1b607cdef894a1fa62470b4f16ba5fe2)
++++ b/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Categoria.kt	(date 1663361207300)
+@@ -1,5 +1,5 @@
+ package co.edu.uniquindio.compiladores.proyecto
+ 
+ enum class Categoria {
+-ENTERO, DECIMAL, IDENTIFICADOR, OPERADOR_ARITMETICO,OPERADOR_LOGICO,PARENTESIS_IZQ, DESCONOCIDO, IDENTIFICADOR_VARIABLE
++ENTERO, DECIMAL, IDENTIFICADOR_VARIABLE,PALABRA_RESERVADA,COMA,PUNTO,FIN_SENTENCIA,PARENTESIS,CORCHETES,LLAVES, OPERADOR_ARITMETICO,OPERADOR_LOGICO, DESCONOCIDO,
+ }
+\ No newline at end of file
+Index: src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Aplicacion.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package co.edu.uniquindio.compiladores.proyecto\r\n\r\nimport kotlin.collections.ArrayList\r\n\r\nfun main() {\r\n\r\n    val lexico = AnalizadorLexico(\"2345.4534 546345 #casa# 123\")\r\n    lexico.analizar()\r\n    print(lexico.listaTokens)\r\n}\r\n    fun esPrimo(numero: Int): Boolean {\r\n        for (i in 2..numero / 2) {\r\n            if (numero % i == 0) {\r\n                return false;\r\n            }\r\n        }\r\n        return true\r\n    }\r\n\r\n    fun esPrimo(numero: Int, i: Int): Boolean {\r\n        return if (numero / 2 < i) {\r\n            true\r\n        } else if (numero % i == 0) {\r\n            false\r\n        } else {\r\n            esPrimo(numero, i + 1)\r\n        }\r\n\r\n    }\r\n\r\n    fun operar(a: Int, b: Int, fn: (Int, Int) -> Int): Int {\r\n        return fn(a, b)\r\n    }\r\n\r\n    fun sumar(a: Int, b: Int) = a + b\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Aplicacion.kt b/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Aplicacion.kt
+--- a/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Aplicacion.kt	(revision 1c28288e1b607cdef894a1fa62470b4f16ba5fe2)
++++ b/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/Aplicacion.kt	(date 1663361790607)
+@@ -4,7 +4,7 @@
+ 
+ fun main() {
+ 
+-    val lexico = AnalizadorLexico("2345.4534 546345 #casa# 123")
++    val lexico = AnalizadorLexico("'")
+     lexico.analizar()
+     print(lexico.listaTokens)
+ }
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1662594080571)
++++ b/.idea/.gitignore	(date 1662594080571)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
