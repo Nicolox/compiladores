@@ -42,16 +42,12 @@ class InicioController2 {
             analizadorLexico = AnalizadorLexico(codigoFuente.text)
             analizadorLexico!!.analizar()
             addDataInTable(analizadorLexico!!.listaTokens)
-            analizadorLexico!!.listaTokens.forEach { t ->
-                println(t)
-            }
+
             val lexico = AnalizadorLexico(codigoFuente.text)
             lexico.analizar()
 
-            print (lexico.listaTokens)
-
             val sintaxis= AnalizadorSintactico(lexico.listaTokens)
-            print(sintaxis.esFuncion())
+            print(sintaxis.esUnidadDeCompilacion())
         }
 
     }

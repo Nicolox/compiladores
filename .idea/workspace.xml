@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="Se agrega la identificación de otras categorías sintáticas necesarias">
+    <list default="true" id="c6c38fc4-2e04-48ef-827d-85992f52c054" name="Changes" comment="Se agrega la identificación de otras categorías sintáticas necesarias y se cambia lo que recibía como argumento la sumatoria">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ValorNumerico.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/controladores/InicioController2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/controladores/InicioController2.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/AnalizadorLexico.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/lexico/Categoria.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/AnalizadorSintactico.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/AnalizadorSintactico.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Argumento.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Argumento.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Sumatoria.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Sumatoria.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Expresion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/Expresion.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionAritmetica.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/co/edu/uniquindio/compiladores/proyecto/sintaxis/ExpresionAritmetica.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -90,6 +92,7 @@
       <workItem from="1664395316450" duration="1210000" />
       <workItem from="1667158956362" duration="1668000" />
       <workItem from="1667226905007" duration="4600000" />
+      <workItem from="1668876801291" duration="4882000" />
     </task>
     <task id="LOCAL-00001" summary="Se hace la primer parte del analizador sintáctico, no reconoce correctamente las funciones, hay que corregirlo">
       <created>1666382077964</created>

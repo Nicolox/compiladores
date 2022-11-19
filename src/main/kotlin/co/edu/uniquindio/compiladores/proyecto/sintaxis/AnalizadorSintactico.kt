@@ -29,11 +29,12 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
             obtenerSiguienteToken()
 
             if (tokenActual.categoria == Categoria.LLAVE_IZQUIERDA) {
+                obtenerSiguienteToken()
                 val listaDeSentencias: ArrayList<Sentencia> = esListaDeSentencias()
 
                 if (listaDeSentencias.size > 0) {
-                    obtenerSiguienteToken()
                     return if (tokenActual.categoria == Categoria.LLAVE_DERECHA) {
+                        obtenerSiguienteToken()
                         UnidadDeCompilacion(listaDeSentencias)
                     } else null
                 }
@@ -170,6 +171,7 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      *<Funcion> ::= met <IdentificadorMetodo> [<ListaArgumentos>] “{“ <ListaDeSentencias> “}”
      */
     fun esFuncion(): Funcion? {
+        print(tokenActual)
         if (tokenActual.categoria == Categoria.PALABRA_RESERVADA && tokenActual.lexema == "met") {
             obtenerSiguienteToken()
             val identificador = esIdentificadorMetodo()
@@ -177,16 +179,18 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
                 var nombreFun = tokenActual
                 obtenerSiguienteToken()
 
-                val listaDeArgumentos: ArrayList<Argumento>? = esListaDeArgumentos()
+                //val listaDeArgumentos: ArrayList<Argumento>? = esListaDeArgumentos()
+                print(tokenActual)
 
                 if (tokenActual.categoria == Categoria.LLAVE_IZQUIERDA) {
                     obtenerSiguienteToken()
+                    print(tokenActual)
 
                     val listaDeSentencias: ArrayList<Sentencia> = esListaDeSentencias()
 
-                    obtenerSiguienteToken()
                     if (tokenActual.categoria == Categoria.LLAVE_DERECHA) {
-                        return Funcion(nombreFun, listaDeSentencias, listaDeArgumentos)
+                        obtenerSiguienteToken()
+                        return Funcion(nombreFun, listaDeSentencias, ArrayList())
                     } else {
                         reportarError("Falta cerrar la funcion con llave derecha")
                     }
@@ -220,9 +224,12 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esIdentificadorVariable(): IdentificadorVariable?
     {
-        if (tokenActual.categoria == Categoria.IDENTIFICADOR_VARIABLE) {
+        if (tokenActual.categoria == Categoria.IDENTIFICADOR_VARIABLE)
+        {
             return IdentificadorVariable(tokenActual)
-        } else {
+        }
+        else
+        {
             reportarError("No es un identificador de variable valido")
         }
 
@@ -563,9 +570,64 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
     /**
      * <ExpresiónAritmetica> ::= <numero> | <identificadorVariable> | <ExpresiónAritmetica> <operadorAritmetico>
      *     <ExpresiónAritmetica> |“(” <ExpresiónAritmetica>”)”
+     *
+     *     Sin recursividad por la izquierda:
+     *
+     *     <ExpAritmetica> ::= "("<ExpAritmetica>")"[operadorAritmetico <ExpAritmetica>] |
+     *     <ValorNumerico>[operadorAritmetico <ExpAritmetica>]
+     *
      */
     fun esExpresionAritmética(): ExpresionAritmetica?
     {
+        if(tokenActual.categoria==Categoria.PARENTESIS_IZQUIERDO)
+        {
+            obtenerSiguienteToken()
+            val exp1: ExpresionAritmetica?= esExpresionAritmética()
+            if(exp1!=null)
+            {
+                if(tokenActual.categoria==Categoria.PARENTESIS_DERECHO)
+                {
+                    obtenerSiguienteToken()
+                    if (tokenActual.categoria==Categoria.OPERADOR_ARITMETICO)
+                    {
+                        val operador: Token=tokenActual
+                        obtenerSiguienteToken()
+                        val exp2: ExpresionAritmetica?= esExpresionAritmética()
+                        if(exp2!=null)
+                        {
+                            return ExpresionAritmetica(exp1, operador, exp2)
+                        }
+                    }
+                    else
+                    {
+                        return ExpresionAritmetica(exp1)
+                    }
+                }
+            }
+        }
+        else
+        {
+            val valor = esValorNumerico()
+            if (valor!=null)
+            {
+                obtenerSiguienteToken()
+                if (tokenActual.categoria==Categoria.OPERADOR_ARITMETICO)
+                {
+                    val operador: Token=tokenActual
+                    obtenerSiguienteToken()
+                    val exp2: ExpresionAritmetica?= esExpresionAritmética()
+                    if(exp2!=null)
+                    {
+                        return ExpresionAritmetica(valor, operador, exp2)
+                    }
+                }
+                else
+                {
+                    return ExpresionAritmetica(valor)
+                }
+            }
+        }
+
         return null
     }
 
@@ -600,6 +662,23 @@ class AnalizadorSintactico(var listaTokens:ArrayList<Token>) {
      */
     fun esInicializacionArreglo(): InicializacionArreglo?
     {
+        return null
+    }
+
+    fun esValorNumerico(): ValorNumerico?
+    {
+        var signo: Token?=null
+        if (tokenActual.categoria==Categoria.OPERADOR_ARITMETICO&&(tokenActual.lexema=="+"||tokenActual.lexema=="-"))
+        {
+            signo=tokenActual
+            obtenerSiguienteToken()
+        }
+        if(tokenActual.categoria==Categoria.ENTERO||tokenActual.categoria==Categoria.DECIMAL||tokenActual.categoria==Categoria.IDENTIFICADOR)
+        {
+            val termino=tokenActual
+            return ValorNumerico(signo,termino)
+        }
+
         return null
     }
 
